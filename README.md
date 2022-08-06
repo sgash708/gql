@@ -21,6 +21,17 @@
 3 directories, 10 files
 ```
 
+### `graph/model`について
+- 自作定義のgoファイルを配置可能。
+- `gqlgen`を実行した際に、`schema.graphqls`から「自作定義のgoファイルの不足フィールド」が`schema.resolvers.go`に生成される。
+- graphqlの型定義に対応する構造体を管理する。
+
+### `graph/schema.resolvers.go`
+- `schema.graphqls`から自動生成される
+  - ロジックを実装するところ
+- エンドポイントの管理をする
+  - handler的な扱いをする
+
 ## 基本的な使い方
 
 ```:bash
@@ -36,7 +47,8 @@ go run github.com/99designs/gqlgen init
 ```
 
 ### 定義ファイル変更後対応
-`graph/model/models_gen.go`や`graph/schema.resolvers.go`を再生成する。
+- `graph/model/models_gen.go`や`graph/schema.resolvers.go`を再生成する。
+  - `graph/resolver.go`と`server.go`はコマンドで再生成されない。
 
 ```:bash
 gqlgen
