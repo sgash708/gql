@@ -217,11 +217,7 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "../schema.graphqls", Input: `# GraphQL schema example
-#
-# https://gqlgen.com/getting-started/
-
-type Todo {
+	{Name: "../schema.graphqls", Input: `type Todo {
   id: ID!
   text: String!
   done: Boolean!
@@ -233,15 +229,18 @@ type User {
   name: String!
 }
 
+# データ取り込み等の定義
 type Query {
   todos: [Todo!]!
 }
 
+# Mutationのオブジェクト型の定義
 input NewTodo {
   text: String!
   userId: String!
 }
 
+# バックエンドのデータを修正する処理の定義
 type Mutation {
   createTodo(input: NewTodo!): Todo!
 }
