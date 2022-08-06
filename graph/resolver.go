@@ -1,5 +1,7 @@
 package graph
 
+import "github.com/sgash708/gql/graph/model"
+
 type Resolver struct {
-	// TODO: DIP(Repositoryなど)を行う
+	todos []*model.Todo
 }
